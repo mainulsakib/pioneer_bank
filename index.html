@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pioneer Bank</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+    <div id="login-area">
+        <h1 class="text-center">Welcome to Pioneer Bank </h1>
+        <div class="submit-area">
+            <h4>log in </h4>
+            
+            <input type="email" class="form-control" name="" id="Email" placeholder="Email">  <br>
+            <input type="password" class="form-control" name="" id="" placeholder="password"><br>
+            <button id="login" class="btn btn-success">Enter</button>
+        </div>
+    </div>
+    <div id="transaction-area">
+      <div class="container">
+        <div class="row">
+            <div class="col-md-4 ">
+                <div class="deposit">
+                    <h5 >Deposit</h5>
+                <h1>$ <span id="currentDeposit">00</span></h1>
+                </div>
+            </div>
+            <div class="col-md-4 ">
+                <div class="withdraw">
+                    <h5>Withdraw</h5>
+                <h1>$$</h1>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="balance">
+                    <h5>Balance</h5>
+                    <h1>$<span id="currentBalance">2334</span></h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="submit-area">
+                    <h4>Deposit</h4>
+                <input id="depositAmount" type="text" class="form-control" placeholder="Your Deposit "><br>
+                <button id="addDeposit" class="btn btn-success">Deposit</button><br>
+                </div>
+                
+            </div>
+            <div class="col-md-6">
+                <div class="submit-area">
+                    <h4>Withdraw</h4>
+                    <input id="withdrawAmount" type="text"  class="form-control" placeholder="Withdraw"><br>
+                    <button  id="addWithdraw" class="btn btn-success" >Withdraw</button><br></div>
+                
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+        // login Button Handler
+        const loginBtn=document.getElementById("login") ;
+        loginBtn.addEventListener("click",function(){
+            var loginArea=document.getElementById("login-area")
+            loginArea.style.display="none";
+            const transactionArea=document.getElementById("transaction-area");
+            transactionArea.style.display="block"
+        })
+        // deposit Button Handler
+        const  depositBtn=document.getElementById("addDeposit");
+        depositBtn.addEventListener('click',function(){
+            var depositAmount=getInputNumber("depositAmount")
+           
+
+            updateSpantext("currentDeposit");
+            updateSpantext("currentBalance");
+            document.getElementById("depositAmount").value="";
+            function updateSpantext(id){
+                var current=document.getElementById(id).innerText;
+                var currentNumber=parseFloat(current);
+                var total=currentNumber+depositNumber;
+                console.log(total);
+                document.getElementById(id).innerText=total;
+            }
+        })
+        // withdraw btn
+        const  withdrawBtn=document.getElementById("addWithdraw");
+        withdrawBtn.addEventListener("click",function(){
+            const withdrawAmount=getInputNumber("withdrawAmount");
+            console.log(withdrawAmount);
+        }
+        )
+            function getInputNumber(id){
+                const Amount=document.getElementById(id).value;
+                const number=parseFloat(Amount);
+                return number;
+            }
+    </script>
+</body>
+</html>
